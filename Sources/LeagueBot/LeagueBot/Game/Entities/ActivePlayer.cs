@@ -51,51 +51,29 @@ namespace LeagueBot.Game.Entities
             }
         }
 
-        public void tryCastSpellOnTarget(int indice)
+        public void tryCastSpellOnTarget(string key)
         {
             IEntity target = getNearTarget();
 
             if (target == null)
                 return;
 
-            if (target is Minion && indice == 3)
+            if (target is Minion && key == "E")
             {
                 return;
             }
-            if (target is Minion && indice == 4)
+            if (target is Minion && key == "R")
             {
                 return;
             }
-            string key = "D" + indice;
             InputHelper.MoveMouse(target.Position.X, target.Position.Y);
             InputHelper.PressKey(key);
             BotHelper.InputIdle();
         }
 
-        public void upgradeSpell(int indice) // <---- replace this by keybinding + league settings
+        public void upgradeSpell(string key) // <---- replace this by keybinding + league settings
         {
-            Point coords = new Point();
-
-            switch (indice)
-            {
-                case 1:
-                    coords = new Point(826, 833);
-                    break;
-                case 2:
-                    coords = new Point(875, 833);
-                    break;
-                case 3:
-                    coords = new Point(917, 833);
-                    break;
-                case 4:
-                    coords = new Point(967, 833);
-                    break;
-                default:
-                    Logger.Write("Unknown spell indice :" + indice, MessageState.WARNING);
-                    return;
-            }
-
-            InputHelper.LeftClick(coords.X, coords.Y);
+            InputHelper.PressKeys(new string[] { "ControlKey", key });
             BotHelper.InputIdle();
         }
         public int getLevel()
@@ -118,84 +96,84 @@ namespace LeagueBot.Game.Entities
             {
                 case 1:
                     Logger.Write("[Q] Level up!");
-                    upgradeSpell(1); // Q 1
+                    upgradeSpell("Q"); // Q 1
                     
                     break;
                 case 2:
                     Logger.Write("[W] Level up!");
-                    upgradeSpell(2); // W 1
+                    upgradeSpell("W"); // W 1
                     
                     break;
                 case 3:
-                    upgradeSpell(3); // E 1
+                    upgradeSpell("E"); // E 1
                     Logger.Write("[E] Level up!");
                     break;
                 case 4:
-                    upgradeSpell(1); // Q 2
+                    upgradeSpell("Q"); // Q 2
                     Logger.Write("[Q] Level up!");
                     break;
                 case 5:
-                    upgradeSpell(1); // Q 3
+                    upgradeSpell("Q"); // Q 3
                     Logger.Write("[Q] Level up!");
                     break;
                 case 6:
-                    upgradeSpell(4); // R 1
+                    upgradeSpell("R"); // R 1
                     Logger.Write("[R] Level up!");
                     break;
                 case 7:
-                    upgradeSpell(1); // Q 4
+                    upgradeSpell("Q"); // Q 4
                     Logger.Write("[Q] Level up!");
                     break;
                 case 8:
-                    upgradeSpell(3); // E 2
+                    upgradeSpell("E"); // E 2
                     Logger.Write("[E] Level up!");
                     break;
                 case 9:
-                    upgradeSpell(1); // Q max
+                    upgradeSpell("Q"); // Q max
                     Logger.Write("[Q] Level up!");
                     break;
                 case 10:
-                    upgradeSpell(3); // E 3
+                    upgradeSpell("E"); // E 3
                     Logger.Write("[E] Level up!");
                     break;
                 case 11:
-                    upgradeSpell(4); // R 2
+                    upgradeSpell("R"); // R 2
                     Logger.Write("[R] Level up!");
                     break;
                 case 12:
-                    upgradeSpell(3); // E 4
+                    upgradeSpell("E"); // E 4
                     Logger.Write("[E] Level up!");
                     break;
                 case 13:
-                    upgradeSpell(3); // E max
+                    upgradeSpell("E"); // E max
                     Logger.Write("[E] Level up!");
                     break;
                 case 14:
-                    upgradeSpell(2); // W 2
+                    upgradeSpell("W"); // W 2
                     Logger.Write("[W] Level up!");
                     break;
                 case 15:
-                    upgradeSpell(2); // W 3
+                    upgradeSpell("W"); // W 3
                     Logger.Write("[W] Level up!");
                     break;
                 case 16:
-                    upgradeSpell(4); // R max
+                    upgradeSpell("R"); // R max
                     Logger.Write("[R] Level up!");
                     break;
                 case 17:
-                    upgradeSpell(2); // W 4
+                    upgradeSpell("W"); // W 4
                     Logger.Write("[W] Level up!");
                     break;
                 case 18:
-                    upgradeSpell(2); // W max
+                    upgradeSpell("W"); // W max
                     Logger.Write("[W] Level up!");
                     break;
                 default:
                     //something not leveled?
-                    upgradeSpell(1);
-                    upgradeSpell(2);
-                    upgradeSpell(3);
-                    upgradeSpell(4);
+                    upgradeSpell("Q");
+                    upgradeSpell("W");
+                    upgradeSpell("E");
+                    upgradeSpell("R");
                     break;
             }
         }

@@ -121,27 +121,32 @@ namespace LeagueBot.Game.Settings
             CFGFile file = new CFGFile(Path.Combine(Configuration.Instance.ClientPath, Constants.LeagueKeyconfigPath));
 
 
-            file.Set("GameEvents", "evtSelectSelf", "[F1]");
-            file.Set("GameEvents", "evtSelectAlly4", "[F5]");
-            file.Set("GameEvents", "evtSelectAlly3", "[F4]");
-            file.Set("GameEvents", "evtSelectAlly2", "[F3]");
+            file.Set("GameEvents", "evtSelectSelf",  "[F1]");                                    
             file.Set("GameEvents", "evtSelectAlly1", "[F2]");
+            file.Set("GameEvents", "evtSelectAlly2", "[F3]");
+            file.Set("GameEvents", "evtSelectAlly3", "[F4]");
+            file.Set("GameEvents", "evtSelectAlly4", "[F5]");
 
 
-            file.Set("GameEvents", "evtCastSpell1", "[1]");
-            file.Set("GameEvents", "evtCastSpell2", "[2]");
-            file.Set("GameEvents", "evtCastSpell3", "[3]");
-            file.Set("GameEvents", "evtCastSpell4", "[4]");
-            file.Set("GameEvents", "evtCastAvatarSpell1", "[5]");
-            file.Set("GameEvents", "evtCastAvatarSpell2", "[6]");
+            file.Set("GameEvents", "evtCastSpell1",       "[Q]");
+            file.Set("GameEvents", "evtCastSpell2",       "[W]");
+            file.Set("GameEvents", "evtCastSpell3",       "[E]");
+            file.Set("GameEvents", "evtCastSpell4",       "[R]");
+            file.Set("GameEvents", "evtCastAvatarSpell1", "[D]");
+            file.Set("GameEvents", "evtCastAvatarSpell2", "[F]");
 
 
-            file.Set("GameEvents", "evtUseItem1", "[q]");
-            file.Set("GameEvents", "evtUseItem2", "[w]");
-            file.Set("GameEvents", "evtUseItem3", "[e]");
-
+            file.Set("GameEvents", "evtUseItem1", "[1]");
+            file.Set("GameEvents", "evtUseItem2", "[2]");
+            file.Set("GameEvents", "evtUseItem3", "[3]");
+            file.Set("GameEvents", "evtUseItem4", "[4]");
+            file.Set("GameEvents", "evtUseItem5", "[5]");
+            file.Set("GameEvents", "evtUseItem6", "[6]");
+            file.Set("GameEvents", "evtNormalCastVisionItem", "[T]");     
 
             file.Save();
+
+            Logger.Write("League of legends keybinds applied.", MessageState.INFO2);
 
             string target = Path.Combine(Configuration.Instance.ClientPath, Constants.LeaguePersistedSettingsPath);
 

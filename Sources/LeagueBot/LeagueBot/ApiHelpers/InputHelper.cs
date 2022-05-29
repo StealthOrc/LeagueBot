@@ -41,6 +41,14 @@ namespace LeagueBot.ApiHelpers
         {
             Keyboard.KeyPress((Keys)Enum.Parse(typeof(Keys), key), 50);
         }
+
+        public static void PressKeys(string[] keys)
+        {
+            Keys[] keyList = new Keys[keys.Length];
+            for (int i = 0; i < keys.Length; i++)
+                keyList[i] = (Keys)Enum.Parse(typeof(Keys), keys[i]);
+            Keyboard.ShortcutKeys(keyList, 50);
+        }
        
 
         public static void MoveMouse(int x, int y)
