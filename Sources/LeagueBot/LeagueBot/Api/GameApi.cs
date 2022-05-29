@@ -120,7 +120,7 @@ namespace LeagueBot.Api
                 }
                 i++;
             }
-            Logger.Write("Ally Followed: N° " + i);
+            Logger.Write("Ally Followed: N° " + (i-StartIndex));
             return index;
            
         }
