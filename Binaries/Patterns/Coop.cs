@@ -21,16 +21,20 @@ namespace LeagueBot
             get;
             set;
         }
-
+        /* ADC Items Build path */
         private Item[] Items = new Item[]
         {
-            new Item("Doran Ring",400),
-            new Item("Sorcere",1100),
-            new Item("Lost Chapter",1300),
-            new Item("Luden Tempest",2100), // <--- Cost when Lost Chapter & Blasting Wand were bought
-            new Item("Needlessly Large Rod",1250),
-            new Item("Needlessly Large Rod",1250),
-            new Item("Rabadon Deathcap",1100),
+            new Item("Long Sword",350),
+            new Item("Berserker",1100),
+            new Item("Noonquiver",1300),
+            new Item("Kraken Slayer",2100),
+            new Item("Zeal",1050),
+            new Item("Rapid",1450),
+            new Item("B.F.",1300),
+            new Item("Pickaxe",875),
+            new Item("Infinity",1225),
+            new Item("Lord",3000),
+            new Item("Blood",3400),
         };
 
         public override bool ThrowException
@@ -240,14 +244,14 @@ namespace LeagueBot
 
             if (Numero = 0)
                 {
-                game.player.tryCastSpellOnTarget(3); // veigar cage
+                game.player.tryCastSpellOnTarget("E"); // veigar cage
                 game.moveCenterScreen();
                 bot.wait(2000);
                 int Numero = rnd.Next(0, 6);
             }
             else if (Numero = 1)
             {
-                game.player.tryCastSpellOnTarget(2); // Z
+                game.player.tryCastSpellOnTarget("W"); // Z
                 game.moveCenterScreen();
                 bot.wait(2000);
                 int Numero = rnd.Next(0, 6);
@@ -255,7 +259,7 @@ namespace LeagueBot
 
             else if (Numero = 2)
             {
-                game.player.tryCastSpellOnTarget(1); // Q
+                game.player.tryCastSpellOnTarget("Q"); // Q
                 game.moveCenterScreen();
                 bot.wait(2000);
                 int Numero = rnd.Next(0, 6);
@@ -263,7 +267,7 @@ namespace LeagueBot
 
             else if (Numero = 3)
             {
-                game.player.tryCastSpellOnTarget(4); // ult 
+                game.player.tryCastSpellOnTarget("R"); // ult 
                 game.moveCenterScreen();
                 bot.wait(2000);
                 int Numero = rnd.Next(0, 6);
@@ -299,27 +303,27 @@ namespace LeagueBot
 
                 game.moveCenterScreen();
 
-                game.player.tryCastSpellOnTarget(3); // veigar cage
+                game.player.tryCastSpellOnTarget("E"); // veigar cage
 
                 game.moveCenterScreen();
 
-                game.player.tryCastSpellOnTarget(2); // Z
+                game.player.tryCastSpellOnTarget("W"); // Z
 
                 game.moveCenterScreen();
 
-                game.player.tryCastSpellOnTarget(1); // Q
+                game.player.tryCastSpellOnTarget("Q"); // Q
 
                 game.moveCenterScreen();
 
-                game.player.tryCastSpellOnTarget(4); // ult 
+                game.player.tryCastSpellOnTarget("R"); // ult 
 
                 game.moveCenterScreen();
 
-                game.player.tryCastSpellOnTarget(5); // Flash
+                game.player.tryCastSpellOnTarget("D"); // Flash
 
                 game.moveCenterScreen();
 
-                game.player.tryCastSpellOnTarget(6); // Ghost
+                game.player.tryCastSpellOnTarget("F"); // Ghost
             }
             Ripeti = 0;
             CheckBuyItems();
