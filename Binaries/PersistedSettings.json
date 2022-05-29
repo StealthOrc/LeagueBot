@@ -624,31 +624,31 @@
                         },
                         {
                             "name": "evtCastAvatarSpell1",
-                            "value": "[e]"
+                            "value": "[d]"
                         },
                         {
                             "name": "evtCastAvatarSpell2",
-                            "value": "[5]"
+                            "value": "[f]"
                         },
                         {
                             "name": "evtCastSpell1",
-                            "value": "[1]"
+                            "value": "[q]"
                         },
                         {
                             "name": "evtCastSpell2",
-                            "value": "[2]"
+                            "value": "[w]"
                         },
                         {
                             "name": "evtCastSpell3",
-                            "value": "[3]"
+                            "value": "[e]"
                         },
                         {
                             "name": "evtCastSpell4",
-                            "value": "[4]"
+                            "value": "[r]"
                         },
                         {
                             "name": "evtChampMasteryDisplay",
-                            "value": "[r]"
+                            "value": "[<Unbound>]"
                         },
                         {
                             "name": "evtChampionOnly",
@@ -1168,35 +1168,35 @@
                         },
                         {
                             "name": "evtUseItem1",
-                            "value": "[q]"
+                            "value": "[1]"
                         },
                         {
                             "name": "evtUseItem2",
-                            "value": "[w]"
+                            "value": "[2]"
                         },
                         {
                             "name": "evtUseItem3",
-                            "value": "[<Unbound>]"
+                            "value": "[3]"
                         },
                         {
                             "name": "evtUseItem4",
-                            "value": "[<Unbound>]"
+                            "value": "[4]"
                         },
                         {
                             "name": "evtUseItem5",
-                            "value": "[6]"
+                            "value": "[5]"
                         },
                         {
                             "name": "evtUseItem6",
-                            "value": "[7]"
+                            "value": "[6]"
                         },
                         {
                             "name": "evtUseItem7",
-                            "value": "[b]"
+                            "value": "[]"
                         },
                         {
                             "name": "evtUseVisionItem",
-                            "value": "[`]"
+                            "value": "[T]"
                         }
                     ]
                 },

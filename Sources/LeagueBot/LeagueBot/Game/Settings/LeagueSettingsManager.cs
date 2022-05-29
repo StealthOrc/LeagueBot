@@ -118,15 +118,18 @@ namespace LeagueBot.Game.Settings
 
             Logger.Write("League of legends settings applied.", MessageState.INFO2);
 
-            CFGFile file = new CFGFile(Path.Combine(Configuration.Instance.ClientPath, Constants.LeagueKeyconfigPath));
+            /* Changing stuff in input.ini certainly doesnt do stuff, since "PersistedSettings.json" exists. 
+             * In there it it said that you could edit /DATA/Cfg/defaults/SettingsToPersist.json but that always changes "presisted": true on Client Startup. 
+             * Once the client has launched you have to edit the PersistedSettings.json an run a game for the settings to take effect.
+             * But just to be sure we set the input.ini */
 
+            CFGFile file = new CFGFile(Path.Combine(Configuration.Instance.ClientPath, Constants.LeagueKeyconfigPath));
 
             file.Set("GameEvents", "evtSelectSelf",  "[F1]");                                    
             file.Set("GameEvents", "evtSelectAlly1", "[F2]");
             file.Set("GameEvents", "evtSelectAlly2", "[F3]");
             file.Set("GameEvents", "evtSelectAlly3", "[F4]");
             file.Set("GameEvents", "evtSelectAlly4", "[F5]");
-
 
             file.Set("GameEvents", "evtCastSpell1",       "[Q]");
             file.Set("GameEvents", "evtCastSpell2",       "[W]");
@@ -135,22 +138,25 @@ namespace LeagueBot.Game.Settings
             file.Set("GameEvents", "evtCastAvatarSpell1", "[D]");
             file.Set("GameEvents", "evtCastAvatarSpell2", "[F]");
 
-
-            file.Set("GameEvents", "evtUseItem1", "[1]");
-            file.Set("GameEvents", "evtUseItem2", "[2]");
-            file.Set("GameEvents", "evtUseItem3", "[3]");
-            file.Set("GameEvents", "evtUseItem4", "[4]");
-            file.Set("GameEvents", "evtUseItem5", "[5]");
-            file.Set("GameEvents", "evtUseItem6", "[6]");
+            file.Set("GameEvents", "evtUseItem1",             "[1]");
+            file.Set("GameEvents", "evtUseItem2",             "[2]");
+            file.Set("GameEvents", "evtUseItem3",             "[3]");
+            file.Set("GameEvents", "evtUseItem4",             "[4]");
+            file.Set("GameEvents", "evtUseItem5",             "[5]");
+            file.Set("GameEvents", "evtUseItem6",             "[6]");
             file.Set("GameEvents", "evtNormalCastVisionItem", "[T]");     
 
             file.Save();
 
-            Logger.Write("League of legends keybinds applied.", MessageState.INFO2);
+            /* Actual keybindings are being set through deleting and replacing the PersistedSettings.json, whilst the client is running! */
+
+            File.Delete(Path.Combine(Configuration.Instance.ClientPath, Constants.LeaguePersistedSettingsPath));        
 
             string target = Path.Combine(Configuration.Instance.ClientPath, Constants.LeaguePersistedSettingsPath);
 
             File.Copy("PersistedSettings.json", target, true);
+
+            Logger.Write("League of legends keybinds applied.", MessageState.INFO2);
         }
     }
 }
