@@ -69,7 +69,8 @@ namespace LeagueBot.IO
             WriteColor1(" |   (.-'(   )(   ||  |(.-'   |   )(   )|  ");
             WriteColor2(" '---'`--'`-'`-`-`|`--`-`--'  '--'  `-' `-'");
             WriteColor2("               ._.' ");
-            WriteColor2("> https://github.com/Skinz3");
+            WriteColor2("> Maintained by https://github.com/StealthOrc");
+            WriteColor2("> Forked from https://github.com/Skinz3/League-of-Legends-Bot");
             Console.WriteLine();
             Console.Title = Assembly.GetEntryAssembly().GetName().Name + " ("+Program.GameCount + " games)";
         }
