@@ -68,6 +68,19 @@ namespace LeagueBot.Game.Entities
             }
             InputHelper.MoveMouse(target.Position.X, target.Position.Y);
             InputHelper.PressKey(key);
+            BotHelper.Wait(10);
+        }
+
+        public void tryAttackMoveOnTarget()
+        {
+            IEntity target = getNearTarget();
+
+            if (target == null)
+                return;
+
+            InputHelper.MoveMouse(target.Position.X, target.Position.Y);
+            InputHelper.PressKey("A");
+            InputHelper.LeftClick(target.Position.X, target.Position.Y);
             BotHelper.InputIdle();
         }
 

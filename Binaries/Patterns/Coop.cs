@@ -10,6 +10,7 @@ namespace LeagueBot
 {
     public class Coop : PatternScript
     {
+        const double healthManaPercentThresh = 0.8d;
 
         private Point CastTargetPoint
         {
@@ -131,10 +132,9 @@ namespace LeagueBot
                 {
                     game.player.recall();
                     bot.wait(10000);
-                    if (game.player.getManaPercent() == 1)
+                    if (game.player.getManaPercent() >= healthManaPercentThresh)
                     {
                         OnSpawnJoin();
-
                     }
                     
 
@@ -192,22 +192,14 @@ namespace LeagueBot
                     game.player.recall();
                     bot.wait(8500);
 
-                    if (game.player.getManaPercent() == 1)
+                    if (game.player.getManaPercent() >= healthManaPercentThresh)
                     {
                         OnSpawnJoin();
                         isRecalling = false;
                     }
                     continue;
                 }
-
-
-
-                if (game.player.getManaPercent() <= 0.10d)
-                {
-                    isRecalling = true;
-                    continue;
-                }
-
+                
                 if (game.player.getHealthPercent() <= 0.07d)
                 {
                     isRecalling = true;
@@ -216,7 +208,9 @@ namespace LeagueBot
 
                 CastAndMove();
 
+                AttackMove();
 
+                CheckBuyItems();
             }
         }
         private void OnDie()
@@ -237,99 +231,37 @@ namespace LeagueBot
 
         private void CastAndMove() // Replace this by Champion pattern script.
         {
-            /*
-            Random rnd = new Random();
-            int Numero = rnd.Next(0, 6);
-            game.moveCenterScreen();
+            if (game.player.getManaPercent() <= healthManaPercentThresh)
+                return;
 
-            if (Numero = 0)
-                {
-                game.player.tryCastSpellOnTarget("E"); // veigar cage
-                game.moveCenterScreen();
-                bot.wait(2000);
-                int Numero = rnd.Next(0, 6);
-            }
-            else if (Numero = 1)
-            {
-                game.player.tryCastSpellOnTarget("W"); // Z
-                game.moveCenterScreen();
-                bot.wait(2000);
-                int Numero = rnd.Next(0, 6);
-            }
-
-            else if (Numero = 2)
-            {
-                game.player.tryCastSpellOnTarget("Q"); // Q
-                game.moveCenterScreen();
-                bot.wait(2000);
-                int Numero = rnd.Next(0, 6);
-            }
-
-            else if (Numero = 3)
-            {
-                game.player.tryCastSpellOnTarget("R"); // ult 
-                game.moveCenterScreen();
-                bot.wait(2000);
-                int Numero = rnd.Next(0, 6);
-            }
-            else if (Numero = 4)
-            {
-                game.player.tryCastSpellOnTarget(D); // Flash 
-                game.moveCenterScreen();
-                bot.wait(2000);
-                int Numero = rnd.Next(0, 6);
-            }
-            else if (Numero = 5)
-            {
-                game.player.tryCastSpellOnTarget(F); // Ghost
-                game.moveCenterScreen();
-                bot.wait(2000);
-                int Numero = rnd.Next(0, 6);
-            }
-            else if (Numero = 6)
-            {
-                CheckBuyItems();
-                game.moveCenterScreen();
-                bot.wait(2000);
-                int Numero = rnd.Next(0, 6);
-
-            }
-          */
             int Ripeti = 0;
-            while (Ripeti < 3)
+            while (Ripeti < 2)
             {
 
                 Ripeti = Ripeti + 1;
 
                 game.moveCenterScreen();
-
-                game.player.tryCastSpellOnTarget("E"); // veigar cage
-
-                game.moveCenterScreen();
-
-                game.player.tryCastSpellOnTarget("W"); // Z
+                game.player.tryCastSpellOnTarget("Q"); 
 
                 game.moveCenterScreen();
-
-                game.player.tryCastSpellOnTarget("Q"); // Q
-
-                game.moveCenterScreen();
-
-                game.player.tryCastSpellOnTarget("R"); // ult 
+                game.player.tryCastSpellOnTarget("W");
 
                 game.moveCenterScreen();
-
-                game.player.tryCastSpellOnTarget("D"); // Flash
+                game.player.tryCastSpellOnTarget("W");
 
                 game.moveCenterScreen();
+                game.player.tryCastSpellOnTarget("R");
 
-                game.player.tryCastSpellOnTarget("F"); // Ghost
             }
             Ripeti = 0;
-            CheckBuyItems();
             
         }
 
+        private void AttackMove()
+        {
+            game.player.tryAttackMoveOnTarget();
+            game.moveCenterScreen();
+        }
 
 
         public override void End()
