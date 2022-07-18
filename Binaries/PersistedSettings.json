@@ -1192,11 +1192,11 @@
                         },
                         {
                             "name": "evtUseItem7",
-                            "value": "[]"
+                            "value": "[b]"
                         },
                         {
                             "name": "evtUseVisionItem",
-                            "value": "[T]"
+                            "value": "[t]"
                         }
                     ]
                 },
