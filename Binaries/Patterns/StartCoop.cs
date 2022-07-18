@@ -12,10 +12,10 @@ namespace LeagueBot
     {
         private static ChampionEnum[] Champions = new ChampionEnum[]
         {
-			ChampionEnum.Ashe,
+            ChampionEnum.Tristana,
+            ChampionEnum.Ashe,
             ChampionEnum.Sivir,
-            ChampionEnum.MissFortune,
-            
+            ChampionEnum.MissFortune
         };
 
         private static QueueEnum QueueType = QueueEnum.BotIntro;
