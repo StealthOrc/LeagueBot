@@ -55,6 +55,9 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="..\..\..\Binaries\Patterns\Coop.cs">
+      <Link>Coop.cs</Link>
+    </Compile>
     <Compile Include="ApiHelpers\BotHelper.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="Game\Enums\ChampionEnum.cs" />

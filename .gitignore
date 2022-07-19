@@ -8,3 +8,5 @@ LeagueBot.Updater
 /Binaries/log.txt
 /.vs
 
+/Updater
+/Binaries/Bot.Log
