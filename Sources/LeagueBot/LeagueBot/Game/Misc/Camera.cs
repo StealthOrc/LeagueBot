@@ -15,6 +15,7 @@ namespace LeagueBot.Game.Misc
             get;
             set;
         }
+
         public Camera(GameApi api) : base(api)
         {
             this.Locked = false;
@@ -26,14 +27,5 @@ namespace LeagueBot.Game.Misc
             BotHelper.InputIdle();
             Locked = !Locked;
         }
-        public void lockAlly(int allyIndice)
-        {
-            string key = "F" + allyIndice;
-            InputHelper.KeyUp(key);
-            BotHelper.InputIdle();
-            InputHelper.KeyDown(key);
-            BotHelper.InputIdle();
-        }
-
     }
 }

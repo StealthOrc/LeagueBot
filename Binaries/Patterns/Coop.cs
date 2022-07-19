@@ -221,7 +221,8 @@ namespace LeagueBot
         {
             BuyItems();
             AllyIndex = game.getAllyIdToFollow();
-            game.camera.lockAlly(AllyIndex);
+            //TODO: Detect Next Lane Objective
+            //TODO: Focus on Next Lane Objective (Tier 1 Turret > Tier 2 Turret > Tier 3 Turret > Inhib > Nexus Turret Left > Nexus Turret Right 
         }
         private void OnRevive()
         {
