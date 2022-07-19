@@ -226,7 +226,6 @@ namespace LeagueBot
         private void OnRevive()
         {
             AllyIndex = game.getAllyIdToFollow();
-            game.camera.lockAlly(AllyIndex);
         }
 
         private void CastAndMove() // Replace this by Champion pattern script.
