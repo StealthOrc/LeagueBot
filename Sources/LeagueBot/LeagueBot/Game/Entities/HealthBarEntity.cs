@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LeagueBot.Game.Entities
 {
-    public class Champion : IEntity
+    public class HealthBarEntity : IEntity
     {
         public bool Ally
         {
@@ -21,7 +21,7 @@ namespace LeagueBot.Game.Entities
             private set;
         }
 
-        public Champion(bool ally, Point position)
+        public HealthBarEntity(bool ally, Point position)
         {
             this.Ally = ally;
             this.Position = position;
