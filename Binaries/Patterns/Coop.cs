@@ -206,8 +206,6 @@ namespace LeagueBot
                     continue;
                 }
 
-                CastAndMove();
-
                 AttackMove();
 
                 CheckBuyItems();
@@ -220,13 +218,12 @@ namespace LeagueBot
         private void OnSpawnJoin()
         {
             BuyItems();
-            AllyIndex = game.getAllyIdToFollow();
             //TODO: Detect Next Lane Objective
             //TODO: Focus on Next Lane Objective (Tier 1 Turret > Tier 2 Turret > Tier 3 Turret > Inhib > Nexus Turret Left > Nexus Turret Right 
         }
         private void OnRevive()
         {
-            AllyIndex = game.getAllyIdToFollow();
+           
         }
 
         private void CastAndMove() // Replace this by Champion pattern script.
@@ -259,8 +256,9 @@ namespace LeagueBot
 
         private void AttackMove()
         {
-            game.player.tryAttackMoveOnTarget();
-            game.moveCenterScreen();
+            /* if we dont attack move, move forward */
+            if (!game.player.tryAttackMoveOnTarget())
+                game.moveCenterScreen();
         }
 
 
