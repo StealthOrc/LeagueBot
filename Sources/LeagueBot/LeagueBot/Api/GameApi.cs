@@ -82,48 +82,6 @@ namespace LeagueBot.Api
             }
 
         }
-     
-        public dynamic getAllies()
-        {
-            return GameLCU.GetAllies();
-        }
-        public int getAllyIdToFollow()
-        {
-            const int StartIndex = 2;
-
-            int max = -1;
-            int index = StartIndex;
-
-            int i = index;
-
-            var allies = getAllies();
-
-            foreach (var ally in allies)
-            {
-                if (i - StartIndex == 4)
-                {
-                    break;
-                }
-
-                if (ally.summonerName == player.getName())
-                {
-                    continue;
-                }
-                if (ally.scores.kills > max && ally.isDead == false)
-                {
-                    if (!ally.summonerSpells.summonerSpellOne.displayName.ToString().ToLower().Contains("smite") && // not jungler
-                        !ally.summonerSpells.summonerSpellTwo.displayName.ToString().ToLower().Contains("smite"))
-                    {
-                        max = ally.scores.kills;
-                        index = i;
-                    }
-                }
-                i++;
-            }
-            Logger.Write("Ally Followed: N° " + (i-StartIndex));
-            return index;
-           
-        }
 
         public SideEnum getSide()
         {
@@ -136,7 +94,7 @@ namespace LeagueBot.Api
 
         public void moveCenterScreen()
         {
-            InputHelper.RightClick(886, 521);
+            InputHelper.RightClick(1330, 490);
             BotHelper.InputIdle();
         }
     }
