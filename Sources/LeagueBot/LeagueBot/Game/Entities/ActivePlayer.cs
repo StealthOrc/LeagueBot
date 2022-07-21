@@ -26,29 +26,19 @@ namespace LeagueBot.Game.Entities
 
         public IEntity getNearTarget()
         {
-            Color color = Color.FromArgb(203, 98, 88); // champion lifebar
+            Color colorChampTurr = Color.FromArgb(203, 98, 88); // target/champion lifebar
 
-            Color color2 = Color.FromArgb(208, 94, 94); // minion lifebar
+            Color colorMinion = Color.FromArgb(208, 94, 94); // minion lifebar
 
-            var target = ScreenHelper.GetColorPosition(color);
+            var target = ScreenHelper.GetColorPosition(colorChampTurr);
+            if (target != null)
+                return new HealthBarEntity(false, new Point(target.Value.X + 50, target.Value.Y + 60)); // lifebarposition + offset to find model
+            
+            target = ScreenHelper.GetColorPosition(colorMinion);
+            if (target != null)
+                return new Minion(new Point(target.Value.X + 30, target.Value.Y + 40));
 
-            if (target == null)
-            {
-                var minion = ScreenHelper.GetColorPosition(color2);
-
-                if (minion == null)
-                {
-                    return null;
-                }
-                else
-                {
-                    return new Minion(new Point(minion.Value.X + 30, minion.Value.Y + 40));
-                }
-            }
-            else
-            {
-                return new Champion(false, new Point(target.Value.X + 50, target.Value.Y + 60)); // lifebarposition + offset to find model
-            }
+            return null;
         }
 
         public void tryCastSpellOnTarget(string key)
@@ -71,17 +61,17 @@ namespace LeagueBot.Game.Entities
             BotHelper.Wait(10);
         }
 
-        public void tryAttackMoveOnTarget()
+        public bool tryAttackMoveOnTarget()
         {
             IEntity target = getNearTarget();
-
             if (target == null)
-                return;
+                return false;
 
             InputHelper.MoveMouse(target.Position.X, target.Position.Y);
             InputHelper.PressKey("A");
             InputHelper.LeftClick(target.Position.X, target.Position.Y);
             BotHelper.InputIdle();
+            return true;
         }
 
         public void upgradeSpell(string key) // <---- replace this by keybinding + league settings
